@@ -13,7 +13,7 @@ import java.io.IOException;
 public class LeLista {
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-        String path = "/Users/alex/Downloads/arquivo.txt";
+        String path = "arquivo.txt";
         Consulta.leitor(path);
     }
 
