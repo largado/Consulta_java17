@@ -26,11 +26,11 @@ public class Consulta {
 
         BufferedReader buffRead = new BufferedReader(new FileReader(path));
         String linha = "";
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.25.250:1521/ORCL","CURSO","kv2940bm");
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@ip:porta/sid","user","senha");
         consulta = con.createStatement();
 
         // grava no arquivo
-        FileWriter escrevedordearquivo = new FileWriter("/Users/alex/Downloads/SAIDA.txt");
+        FileWriter escrevedordearquivo = new FileWriter("SAIDA.txt");
         BufferedWriter bufferescrevedor = new BufferedWriter(escrevedordearquivo);
 
         while (true) {
@@ -40,11 +40,11 @@ public class Consulta {
                 try {
 
                     Class.forName("oracle.jdbc.OracleDriver");
-                    resultado = consulta.executeQuery("select * from tabela_de_clientes where CPF in  ('"+linha+"')");
+                    resultado = consulta.executeQuery("select * from tabela where campo in  ('"+linha+"')");
                     while(resultado.next()) {
 
-                        System.out.println(resultado.getString("CPF"));
-                        bufferescrevedor.write(resultado.getString("CPF"));
+                        System.out.println(resultado.getString("campo"));
+                        bufferescrevedor.write(resultado.getString("campo"));
                         bufferescrevedor.newLine();
 
                     }
